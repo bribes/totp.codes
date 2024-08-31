@@ -142,12 +142,9 @@ function updateOtp() {
         var offset = hex2dec(hmac.substring(hmac.length - 1));
 
         var otp = (hex2dec(hmac.substr(offset * 2, 8)) & hex2dec('7fffffff')) + '';
-        console.log(otp)
         otp = otp.substring(otp.length - 6);
 
         document.getElementById('otp').innerHTML = otp;
-    } else {
-        document.getElementById('otp').innerHTML = "000000";
     }
 }
 
@@ -159,6 +156,7 @@ function timer() {
         document.getElementById('updatingIn').innerHTML = countDown;
     } else {
         document.getElementById('updatingIn').innerHTML = "0";
+        document.getElementById('otp').innerHTML = "000000";
     }
 }
 
@@ -167,7 +165,7 @@ document.getElementById('update').addEventListener('click', function (event) {
     event.preventDefault();
 });
 
-document.getElementById('otp-number-input-16').addEventListener('change', function () {
+document.getElementById('otp-number-input-16').addEventListener('input', function () {
     updateOtp();
 });
 
