@@ -4,12 +4,6 @@ const getSecret = (_inputs = inputs) => {
     return _inputs.map(a => a.value).join('');
 }
 
-const getAllBefore = (current) => {
-    var myArr = new Array('alpha','beta','gamma','delta');
-    var i = myArr.indexOf(current);
-    return i > -1 ? myArr.slice(0, i) : [];
-}
-
 inputs.forEach((e) => {
     e.addEventListener('keydown', function (ev) {
         if (ev.keyCode == 17 || ev.keyCode == 86 && ev.ctrlKey) {
