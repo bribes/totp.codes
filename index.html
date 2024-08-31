@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TOTP (One Time Password) Viewer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://caligatio.github.io/jsSHA/sha.js"></script>
+    <script src="./totp.js" defer></script>
+</head>
+
+<body>
+    <div class="otpOuter">
+        <h1>TOTP (One Time Password) Viewer</h1>
+        <div class="otpInner otp-container">
+            <input type="tel" id="otp-number-input-1" class="otp-number-input Numeric" maxlength="1" autocomplete="off">
+            <input type="tel" id="otp-number-input-2" class="otp-number-input Numeric" maxlength="1" autocomplete="off">
+            <input type="tel" id="otp-number-input-3" class="otp-number-input Numeric" maxlength="1" autocomplete="off">
+            <input type="tel" id="otp-number-input-4" class="otp-number-input Numeric" maxlength="1" autocomplete="off">
+            <input type="tel" id="otp-number-input-5" class="otp-number-input Numeric" maxlength="1" autocomplete="off">
+            <input type="tel" id="otp-number-input-6" class="otp-number-input Numeric" maxlength="1" autocomplete="off">
+            <input type="tel" id="otp-number-input-7" class="otp-number-input Numeric" maxlength="1" autocomplete="off">
+            <input type="tel" id="otp-number-input-8" class="otp-number-input Numeric" maxlength="1" autocomplete="off">
+            <input type="tel" id="otp-number-input-9" class="otp-number-input Numeric" maxlength="1" autocomplete="off">
+            <input type="tel" id="otp-number-input-10" class="otp-number-input Numeric" maxlength="1"
+                autocomplete="off">
+            <input type="tel" id="otp-number-input-11" class="otp-number-input Numeric" maxlength="1"
+                autocomplete="off">
+            <input type="tel" id="otp-number-input-12" class="otp-number-input Numeric" maxlength="1"
+                autocomplete="off">
+            <input type="tel" id="otp-number-input-13" class="otp-number-input Numeric" maxlength="1"
+                autocomplete="off">
+            <input type="tel" id="otp-number-input-14" class="otp-number-input Numeric" maxlength="1"
+                autocomplete="off">
+            <input type="tel" id="otp-number-input-15" class="otp-number-input Numeric" maxlength="1"
+                autocomplete="off">
+            <input type="tel" id="otp-number-input-16" class="otp-number-input Numeric" maxlength="1"
+                autocomplete="off">
+        </div>
+        <br>
+        <h2>One-time Password</h2>
+        <p id="otp">000000</p>
+        <br>
+        <p>Updating in <b id="updatingIn">0</b> second(s)</p>
+        <br>
+        <button id="update">Force Update</button>
+    </div>
+</body>
+
+</html>
