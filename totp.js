@@ -1,7 +1,7 @@
 const inputs = [...document.getElementsByClassName("otp-number-input")];
 
 const getSecret = (_inputs = inputs) => {
-    return _inputs.map(a => a.value).join('')
+    return _inputs.map(a => a.value).join('');
 }
 
 inputs.forEach((e) => {
@@ -31,7 +31,7 @@ inputs.forEach((e) => {
                 next_input = ev.target.nextElementSibling;
                 next_input.value = "";
                 while (next_input.nextElementSibling.length > 0) {
-                    next_input.val(next_input.nextElementSibling.value);
+                    next_input.value = next_input.nextElementSibling.value;
                     next_input = next_input.nextElementSibling;
                     if (next_input.nextElementSibling.length == 0) {
                         next_input.value = "";
@@ -82,11 +82,13 @@ inputs.forEach(e => e.addEventListener("paste", function (e) {
     var clipboardData = e.clipboardData || window.clipboardData;
     var pastedData = clipboardData.getData('Text');
 
+    pastedData = pastedData.split(' ').join('');
+
     var active = document.activeElement;
     if (active && active.classList.contains('otp-number-input')) {
         var startFrom = Number(active.id.split('-').slice(-1)[0]);
-        var fullData = getSecret(inputs.slice(startFrom - 1)) + pastedData;
-
+        var fullData = getSecret(inputs.splice(-(startFrom - 1))) + pastedData;
+        
         if (fullData.length <= 16) {
             pastedData.split('').forEach((letter, i, arr) => {
                 var el = document.getElementById('otp-number-input-' + (i + startFrom));
