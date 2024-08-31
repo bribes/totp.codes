@@ -71,3 +71,11 @@ button {
 button:hover {
     filter: brightness(90%);
 }
+
+h1 {
+    font-size: 42px;
+}
+
+h2 {
+    font-size: 26px;
+}

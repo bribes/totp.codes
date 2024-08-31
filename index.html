@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>TOTP (Time-based One Time Password) Viewer</title>
+    <title>TOTP Viewer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -15,7 +15,9 @@
 
 <body>
     <div class="otpOuter">
-        <h1>TOTP (Time-based One Time Password) Viewer</h1>
+        <h1>TOTP Viewer</h1>
+        <br>
+        <h2>Secret Key</h2>
         <div class="otpInner otp-container">
             <input type="tel" id="otp-number-input-1" class="otp-number-input Numeric" maxlength="1" autocomplete="off">
             <input type="tel" id="otp-number-input-2" class="otp-number-input Numeric" maxlength="1" autocomplete="off">
@@ -43,12 +45,11 @@
         </div>
         <br>
         <br>
-        <h2>One-time Password</h2>
+        <h2>TOTP</h2>
         <p id="otp">000000</p>
         <br>
         <p>Updating in <b id="updatingIn">0</b> second(s)</p>
         <br>
-        <button id="update">Force Update</button>
     </div>
 </body>
 

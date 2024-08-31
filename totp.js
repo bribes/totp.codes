@@ -47,7 +47,7 @@ inputs.forEach((e) => {
         ev.target.select();
     });
 
-    e.addEventListener('keyup', function (ev) {
+    e.addEventListener('input', function (ev) {
         if (ev.keyCode == 17 || ev.keyCode == 86 && ev.ctrlKey) {
         } else {
             otpCodeTemp = "";
@@ -94,7 +94,7 @@ inputs.forEach(e => e.addEventListener("paste", function (e) {
             pastedData.split('').forEach((letter, i, arr) => {
                 var el = document.getElementById('otp-number-input-' + (i + startFrom));
                 el.value = letter;
-                if ((i + startFrom) == 16) document.getElementById('update').click();
+                if ((i + startFrom) == 16) updateOtp();
                 if (arr.length - 1 == i) el.focus();
             })
         } else {
@@ -162,11 +162,6 @@ function timer() {
         document.getElementById('otp').innerHTML = "000000";
     }
 }
-
-document.getElementById('update').addEventListener('click', function (event) {
-    updateOtp();
-    event.preventDefault();
-});
 
 document.getElementById('otp-number-input-16').addEventListener('input', function () {
     updateOtp();
