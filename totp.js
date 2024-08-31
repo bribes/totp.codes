@@ -4,6 +4,12 @@ const getSecret = (_inputs = inputs) => {
     return _inputs.map(a => a.value).join('');
 }
 
+const getAllBefore = (current) => {
+    var myArr = new Array('alpha','beta','gamma','delta');
+    var i = myArr.indexOf(current);
+    return i > -1 ? myArr.slice(0, i) : [];
+}
+
 inputs.forEach((e) => {
     e.addEventListener('keydown', function (ev) {
         if (ev.keyCode == 17 || ev.keyCode == 86 && ev.ctrlKey) {
@@ -87,7 +93,8 @@ inputs.forEach(e => e.addEventListener("paste", function (e) {
     var active = document.activeElement;
     if (active && active.classList.contains('otp-number-input')) {
         var startFrom = Number(active.id.split('-').slice(-1)[0]);
-        var fullData = getSecret(inputs.splice(-(startFrom - 1))) + pastedData;
+        var fullData = getSecret(inputs.slice(0, startFrom-1)) + pastedData;
+        console.log(fullData)
         
         if (fullData.length <= 16) {
             pastedData.split('').forEach((letter, i, arr) => {
