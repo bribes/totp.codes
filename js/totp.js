@@ -37,7 +37,6 @@ function updateOtp() {
             var epoch = Math.round(new Date().getTime() / 1000);
             var time = leftpad(dec2hex(Math.floor(epoch / 30)), 16, '0');
 
-            // updated for jsSHA v2.0.0 - http://caligatio.github.io/jsSHA/
             var shaObj = new jsSHA("SHA-1", "HEX");
             shaObj.setHMACKey(key, "HEX");
             shaObj.update(time);
@@ -49,15 +48,18 @@ function updateOtp() {
 
             currentOtp = otp;
             document.getElementById('otp').innerHTML = "1" + otp.toLocaleString('en-US') + "1";
+            document.getElementById('otp').style.color = 'white';
         } catch {
             document.getElementById('updatingIn').innerHTML = "30";
             currentOtp = 0;
             document.getElementById('otp').innerHTML = "1" + "000000" + "1";
+            document.getElementById('otp').style.color = '';
         }
     } else {
         document.getElementById('updatingIn').innerHTML = "30";
         currentOtp = 0;
         document.getElementById('otp').innerHTML = "1" + "000000" + "1";
+        document.getElementById('otp').style.color = '';
     }
 }
 
@@ -67,6 +69,7 @@ function timer() {
         var countDown = 30 - (epoch % 30);
         if (epoch % 30 == 0) updateOtp();
         document.getElementById('updatingIn').innerHTML = countDown;
+        if (countDown <= 5) document.getElementById('otp').style.color = 'darkred'
     } else {
         document.getElementById('updatingIn').innerHTML = "30";
     }
@@ -85,7 +88,6 @@ function fallbackCopyTextToClipboard(text) {
     var textArea = document.createElement("textarea");
     textArea.value = text;
 
-    // Avoid scrolling to bottom
     textArea.style.top = "0";
     textArea.style.left = "0";
     textArea.style.position = "fixed";
@@ -117,17 +119,19 @@ function copyTextToClipboard(text) {
     });
 }
 
-copyClick.addEventListener('click', () => copyTextToClipboard(currentOtp))
+otp.addEventListener('click', () => copyTextToClipboard(currentOtp))
 
-tippy('#copyClick', {
+tippy('#otp', {
     content: "Copied!",
     trigger: 'click',
     animation: 'shift-away',
     hideOnClick: false,
+    theme: 'translucent',
+    offset:[0,-27.5],
     onShow(instance) {
       setTimeout(() => {
         instance.hide();
-      }, 1100);
+      }, 500);
     }
 });
 

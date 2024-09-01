@@ -79,7 +79,57 @@ a.github {
     width: 100%;
     height: 100%;
     filter: invert(1);
-    opacity: .15;
+    opacity: .2;
+}
+
+#otp {
+    -webkit-transition: color 400ms linear;
+    -ms-transition: color 400ms linear;
+    transition: color 400ms linear;
+    cursor: pointer;
+}
+
+.tippy-box canvas {
+    filter: drop-shadow(0 0 4px #000);
+}
+
+.tippy-box[data-theme~=translucent] {
+    background-color: #262626;
+    border-radius: 2.65rem;
+    padding: .8rem
+}
+
+.tippy-box[data-theme~=translucent]>.tippy-arrow {
+    width: 14px;
+    height: 14px
+}
+
+.tippy-box[data-theme~=translucent][data-placement^=top]>.tippy-arrow:before {
+    border-width: 7px 7px 0;
+    border-top-color: #262626
+}
+
+.tippy-box[data-theme~=translucent][data-placement^=bottom]>.tippy-arrow:before {
+    border-width: 0 7px 7px;
+    border-bottom-color: #262626
+}
+
+.tippy-box[data-theme~=translucent][data-placement^=left]>.tippy-arrow:before {
+    border-width: 7px 0 7px 7px;
+    border-left-color: #262626
+}
+
+.tippy-box[data-theme~=translucent][data-placement^=right]>.tippy-arrow:before {
+    border-width: 7px 7px 7px 0;
+    border-right-color: #262626
+}
+
+.tippy-box[data-theme~=translucent]>.tippy-backdrop {
+    background-color: #262626
+}
+
+.tippy-box[data-theme~=translucent]>.tippy-svg-arrow {
+    fill: #262626
 }
 
 @media screen and (max-width: 600px) {
