@@ -48,7 +48,7 @@ function updateOtp() {
 
             currentOtp = otp;
             document.getElementById('otp').innerHTML = "1" + otp.toLocaleString('en-US') + "1";
-            document.getElementById('otp').style.color = 'white';
+            document.getElementById('otp').style.color = 'rgba(255, 255, 255, 1)';
         } catch {
             document.getElementById('updatingIn').innerHTML = "30";
             currentOtp = 0;
@@ -69,7 +69,6 @@ function timer() {
         var countDown = 30 - (epoch % 30);
         if (epoch % 30 == 0) updateOtp();
         document.getElementById('updatingIn').innerHTML = countDown;
-        if (countDown <= 5) document.getElementById('otp').style.color = 'darkred'
     } else {
         document.getElementById('updatingIn').innerHTML = "30";
     }
