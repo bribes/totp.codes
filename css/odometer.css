@@ -1,10 +1,3 @@
-.odometer .odometer-inside .odometer-digit:first-child,
-.odometer .odometer-inside .odometer-formatting-mark:nth-child(2),
-.odometer .odometer-inside .odometer-digit:last-child,
-.odometer-formatting-mark {
-    display: none
-}
-
 .odometer.odometer-auto-theme,
 .odometer.odometer-theme-default {
     display: inline-block;
@@ -56,6 +49,12 @@
 .odometer.odometer-theme-default .odometer-digit .odometer-ribbon-inner {
     display: block;
     -webkit-backface-visibility: shown;
+}
+
+.odometer.odometer-auto-theme .odometer-digit .odometer-value,
+.odometer.odometer-theme-default .odometer-digit .odometer-value {
+    display: block;
+    -webkit-transform: translateZ(0);
 }
 
 .odometer.odometer-auto-theme .odometer-digit .odometer-value.odometer-last-value,

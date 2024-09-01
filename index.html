@@ -22,12 +22,28 @@
 
     <style>
         .odometer.odometer-animating-up .odometer-ribbon-inner,
-        .odometer.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
+        .odometer.odometer-animating-down.odometer-animating .odometer-ribbon-inner,
+        #otp {
             -webkit-transition-duration: 1.25s !important;
             -moz-transition-duration: 1.25s !important;
             -ms-transition-duration: 1.25s !important;
             -o-transition-duration: 1.25s !important;
             transition-duration: 1.25s !important
+        }
+
+        .odometer .odometer-inside .odometer-digit:first-child,
+        .odometer .odometer-inside .odometer-formatting-mark:nth-child(2),
+        .odometer .odometer-inside .odometer-digit:last-child,
+        .odometer-formatting-mark {
+            display: none
+        }
+        
+        .odometer .odometer-inside:before {
+            display: inline-block;
+            vertical-align: sup;
+            opacity: .6;
+            font-size: .85em;
+            margin-right: .12em
         }
     </style>
     <link rel="stylesheet" href="./css/odometer.css">
@@ -39,7 +55,7 @@
     <script type="text/javascript">
         window.odometerOptions = {
             format: '(ddd)',
-            duration: 1250
+            duration: 4050
         }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/3.3.1/sha1.js" crossorigin="anonymous"></script>
@@ -58,7 +74,7 @@
         <h1>totp.codes</h1>
         <br>
         <input type="password" maxlength="40" autocomplete="off" id="secret" placeholder="paste your secret key here">
-        <code style="transition: opacity 1.5s ease-in-out;" id="otp" class="stat-number odometer">000000</code>
+        <code id="otp" class="stat-number odometer">000000</code>
         <p>click to copy / expires in <b id="updatingIn">30</b></p>
     </div>
 </body>
