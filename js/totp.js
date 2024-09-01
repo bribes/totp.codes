@@ -47,7 +47,7 @@ function updateOtp() {
             otp = otp.substring(otp.length - 6);
 
             currentOtp = otp;
-            document.getElementById('otp').innerHTML = "1" + otp.toLocaleString('en-US') + "1";
+            document.getElementById('otp').innerHTML = "1" + String(otp) + "1";
             document.getElementById('otp').style.color = 'rgba(255, 255, 255, 1)';
         } catch {
             document.getElementById('updatingIn').innerHTML = "30";
