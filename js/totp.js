@@ -31,7 +31,7 @@ function base32tohex(base32) {
 }
 
 function updateOtp() {
-    if (secretKey.length >= 16 && secretKey.length <= 32) {
+    if (secretKey.length >= 16 && secretKey.length <= 40) {
         try {
             var key = base32tohex(secretKey);
             var epoch = Math.round(new Date().getTime() / 1000);
