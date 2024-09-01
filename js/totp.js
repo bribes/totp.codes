@@ -119,7 +119,7 @@ function copyTextToClipboard(text) {
     });
 }
 
-otp.addEventListener('click', () => copyTextToClipboard(currentOtp))
+otp.addEventListener('click', () => copyTextToClipboard(currentOtp == 0 ? "000000" : currentOtp))
 
 tippy('#otp', {
     content: "Copied!",
