@@ -48,18 +48,18 @@ function updateOtp() {
 
             currentOtp = otp;
             document.getElementById('otp').innerHTML = "1" + String(otp) + "1";
-            document.getElementById('otp').style.color = 'rgba(255, 255, 255, 1)';
+            document.getElementById('otp').style.opacity = '1';
         } catch {
             document.getElementById('updatingIn').innerHTML = "30";
             currentOtp = 0;
             document.getElementById('otp').innerHTML = "1" + "000000" + "1";
-            document.getElementById('otp').style.color = '';
+            document.getElementById('otp').style.opacity = '';
         }
     } else {
         document.getElementById('updatingIn').innerHTML = "30";
         currentOtp = 0;
         document.getElementById('otp').innerHTML = "1" + "000000" + "1";
-        document.getElementById('otp').style.color = '';
+        document.getElementById('otp').style.opacity = '';
     }
 }
 
@@ -80,7 +80,7 @@ secret.addEventListener('input', function () {
     if (secretKey.length == 0) {
         document.getElementById('updatingIn').innerHTML = "30";
         document.getElementById('otp').innerHTML = "1" + "000000" + "1";
-        document.getElementById('otp').style.color = '';
+        document.getElementById('otp').style.opacity = '';
     }
 })
 

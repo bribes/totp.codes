@@ -51,8 +51,10 @@ code {
     display: block;
     padding: 7px;
     border-radius: 6px;
-    color: rgba(255, 255, 255, .15);
+    color: white;
+    opacity: .15;
     margin-top: .5rem;
+    cursor: pointer;
 }
 
 p {
@@ -79,10 +81,6 @@ a.github {
     height: 100%;
     filter: invert(1);
     opacity: .2;
-}
-
-#otp {
-    cursor: pointer;
 }
 
 .tippy-box canvas {
