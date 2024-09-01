@@ -31,7 +31,7 @@ input {
     font-size: 18px;
     font-family: 'Inconsolata';
     font-weight: 500;
-    width: 420px;
+    width: 140%;
     color: white;
     -webkit-transition: all 200ms linear;
     -ms-transition: all 200ms linear;
@@ -64,4 +64,25 @@ p {
 
 h1 {
     font-weight: 400;
+}
+
+a.github {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    right: 0;
+    top: 0;
+    margin: 2rem;
+}
+
+.github img {
+    width: 100%;
+    height: 100%;
+    filter: invert(1);
+}
+
+@media screen and (max-width: 600px) {
+    input {
+        width: 100%;
+    }
 }

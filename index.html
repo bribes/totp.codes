@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html dir="ltr" lang="en-US">
 
 <head>
-    <title>TOTP Viewer</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <title>totp.codes</title>
+    <meta name="title" content="totp.codes" />
+    <meta name="description" content="Open-source TOTP (Time-based One Time Password) Viewer." />
+
+    <meta property="og:url" content="https://totp.codes" />
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="totp.codes" />
+    <meta property="og:title" content="totp.codes" />
+    <meta property="og:description" content="Open-source TOTP (Time-based One Time Password) Viewer." />
+
+    <meta property="twitter:url" content="https://totp.codes" />
+    <meta property="twitter:title" content="totp.codes" />
+    <meta property="twitter:description" content="Open-source TOTP (Time-based One Time Password) Viewer." />
+
     <style>
-        .odometer.odometer-animating-up .odometer-ribbon-inner, .odometer.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
+        .odometer.odometer-animating-up .odometer-ribbon-inner,
+        .odometer.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
             -webkit-transition-duration: 1s !important;
             -moz-transition-duration: 1s !important;
             -ms-transition-duration: 1s !important;
@@ -17,7 +35,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tippy.js/6.3.7/animations/shift-away.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script type="text/javascript">
         window.odometerOptions = {
@@ -25,13 +43,18 @@
             duration: 500
         }
     </script>
-    <script src="https://caligatio.github.io/jsSHA/sha.js"></script>
+    <script src="https://caligatio.github.io/jsSHA/sha.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tippy.js/6.3.7/tippy.umd.min.js"
+        crossorigin="anonymous"></script>
     <script src="./js/odometer.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
     <script src="./js/totp.js" defer></script>
 </head>
 
 <body>
+    <a rel="nofollow" href="https://github.com/bribes/TOTP-Viewer" target="_blank" title="GitHub Repository"
+        class="github"><img src="./github.png" alt="GitHub"></a>
     <div class="otpOuter">
         <h1>totp.codes</h1>
         <br>
