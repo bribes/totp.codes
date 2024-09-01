@@ -23,19 +23,11 @@
     <style>
         .odometer.odometer-animating-up .odometer-ribbon-inner,
         .odometer.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
-            -webkit-transition-duration: 1s !important;
-            -moz-transition-duration: 1s !important;
-            -ms-transition-duration: 1s !important;
-            -o-transition-duration: 1s !important;
-            transition-duration: 1s !important
-        }
-
-        .odometer-ribbon-inner {
-            -webkit-backface-visibility: visible !important;
-        }
-
-        .odometer-value {
-            -webkit-transform: none !important;
+            -webkit-transition-duration: 1.25s !important;
+            -moz-transition-duration: 1.25s !important;
+            -ms-transition-duration: 1.25s !important;
+            -o-transition-duration: 1.25s !important;
+            transition-duration: 1.25s !important
         }
     </style>
     <link rel="stylesheet" href="./css/odometer.css">
@@ -46,8 +38,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tippy.js/6.3.7/animations/shift-away.css" />
     <script type="text/javascript">
         window.odometerOptions = {
-            format: '(,ddd).ddd',
-            duration: 500
+            format: '(ddd)',
+            duration: 1250
         }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/3.3.1/sha1.js" crossorigin="anonymous"></script>
