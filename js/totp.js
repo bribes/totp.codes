@@ -106,6 +106,17 @@ function fallbackCopyTextToClipboard(text) {
 }
 
 function copyTextToClipboard(text) {
+    Toastify({
+        text: "Copied!",
+        duration: 1100,
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+            background: "rgba(255, 255, 255, 0.1)",
+            "box-shadow": "none", 
+            "border-radius": ".6rem"
+        },
+        onClick: function () { } // Callback after click
+    }).showToast();
     if (!navigator.clipboard) {
         fallbackCopyTextToClipboard(text);
         return;
