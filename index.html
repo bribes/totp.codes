@@ -3,53 +3,39 @@
 
 <head>
     <title>TOTP Viewer</title>
+    <style>
+        .odometer.odometer-animating-up .odometer-ribbon-inner, .odometer.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
+            -webkit-transition-duration: 1s !important;
+            -moz-transition-duration: 1s !important;
+            -ms-transition-duration: 1s !important;
+            -o-transition-duration: 1s !important;
+            transition-duration: 1s !important
+        }
+    </style>
+    <link rel="stylesheet" href="./css/odometer.css">
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script type="text/javascript">
+        window.odometerOptions = {
+            format: '(,ddd).ddd',
+            duration: 500
+        }
+    </script>
     <script src="https://caligatio.github.io/jsSHA/sha.js"></script>
-    <script src="./totp.js" defer></script>
+    <script src="./js/odometer.js"></script>
+    <script src="./js/totp.js" defer></script>
 </head>
 
 <body>
     <div class="otpOuter">
-        <h1>TOTP Viewer</h1>
+        <h1>totp.codes</h1>
         <br>
-        <h2>Secret Key</h2>
-        <div class="otpInner otp-container">
-            <input type="tel" id="otp-number-input-1" class="otp-number-input Numeric" maxlength="1" autocomplete="off">
-            <input type="tel" id="otp-number-input-2" class="otp-number-input Numeric" maxlength="1" autocomplete="off">
-            <input type="tel" id="otp-number-input-3" class="otp-number-input Numeric" maxlength="1" autocomplete="off">
-            <input type="tel" id="otp-number-input-4" class="otp-number-input Numeric" maxlength="1" autocomplete="off">
-            <input type="tel" id="otp-number-input-5" class="otp-number-input Numeric" maxlength="1" autocomplete="off">
-            <input type="tel" id="otp-number-input-6" class="otp-number-input Numeric" maxlength="1" autocomplete="off">
-            <input type="tel" id="otp-number-input-7" class="otp-number-input Numeric" maxlength="1" autocomplete="off">
-            <input type="tel" id="otp-number-input-8" class="otp-number-input Numeric" maxlength="1" autocomplete="off">
-            <input type="tel" id="otp-number-input-9" class="otp-number-input Numeric" maxlength="1" autocomplete="off">
-            <input type="tel" id="otp-number-input-10" class="otp-number-input Numeric" maxlength="1"
-                autocomplete="off">
-            <input type="tel" id="otp-number-input-11" class="otp-number-input Numeric" maxlength="1"
-                autocomplete="off">
-            <input type="tel" id="otp-number-input-12" class="otp-number-input Numeric" maxlength="1"
-                autocomplete="off">
-            <input type="tel" id="otp-number-input-13" class="otp-number-input Numeric" maxlength="1"
-                autocomplete="off">
-            <input type="tel" id="otp-number-input-14" class="otp-number-input Numeric" maxlength="1"
-                autocomplete="off">
-            <input type="tel" id="otp-number-input-15" class="otp-number-input Numeric" maxlength="1"
-                autocomplete="off">
-            <input type="tel" id="otp-number-input-16" class="otp-number-input Numeric" maxlength="1"
-                autocomplete="off">
-        </div>
-        <br>
-        <br>
-        <h2>TOTP</h2>
-        <p id="otp">000000</p>
-        <br>
-        <p>Updating in <b id="updatingIn">0</b> second(s)</p>
-        <br>
+        <input type="text" maxlength="32" autocomplete="off" id="secret" placeholder="paste your secret key here">
+        <code id="otp" class="stat-number odometer">000000</code>
+        <p id="copyClick">click to copy / expires in <b id="updatingIn">30</b></p>
     </div>
 </body>
 
