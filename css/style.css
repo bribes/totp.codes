@@ -1,11 +1,11 @@
 * {
     margin: 0px;
     padding: 0px;
+    font-family: 'Inconsolata', sans-serif !important;
 }
 
 html,
 body {
-    font-family: 'Inconsolata', sans-serif !important;
     position: absolute;
     top: 50%;
     left: 50%;
