@@ -80,6 +80,7 @@ secret.addEventListener('input', function () {
     if (secretKey.length == 0) {
         document.getElementById('updatingIn').innerHTML = "30";
         document.getElementById('otp').innerHTML = "1" + "000000" + "1";
+        document.getElementById('otp').style.color = '';
     }
 })
 
