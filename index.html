@@ -33,13 +33,6 @@
             -o-transition-duration: 1.25s !important;
             transition-duration: 1.25s !important
         }
-
-        .odometer .odometer-inside .odometer-digit:first-child,
-        .odometer .odometer-inside .odometer-formatting-mark:nth-child(2),
-        .odometer .odometer-inside .odometer-digit:last-child,
-        .odometer-formatting-mark {
-            display: none
-        }
     </style>
     <link rel="stylesheet" href="./css/odometer.css">
     <link rel="stylesheet" href="./css/style.css">
@@ -55,7 +48,8 @@
     <script type="text/javascript">
         window.odometerOptions = {
             format: '(ddd)',
-            duration: 4050
+            duration: 4050,
+            minIntegerLen: 6
         }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/3.3.1/sha1.js" crossorigin="anonymous"></script>
