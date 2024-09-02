@@ -1,6 +1,6 @@
 *,
 *::before,
-*::after  {
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -17,6 +17,26 @@ body {
     justify-content: center;
     min-height: 100%;
     min-width: 100%;
+}
+
+@media (scripting: enabled) {
+    .preload * {
+        -webkit-transition: none !important;
+        -moz-transition: none !important;
+        -ms-transition: none !important;
+        -o-transition: none !important;
+        transition: none !important;
+    }
+}
+
+@supports (-webkit-touch-callout: none) {
+    .preload * {
+        -webkit-transition: none !important;
+        -moz-transition: none !important;
+        -ms-transition: none !important;
+        -o-transition: none !important;
+        transition: none !important;
+    }
 }
 
 .otpOuter {
