@@ -1,4 +1,3 @@
-const inputs = [...document.getElementsByClassName("otp-number-input")];
 const secret = document.getElementById('secret');
 var secretKey = "";
 var currentOtp = 0;
