@@ -24,14 +24,14 @@ function html(strings, ...args) {
 }
 
 function toDigits(num, size = 0) {
-  const result = Number.isNaN(num) ? [] : num.toString().split("");
+  const result = num.split("").map(a=>parseInt(a));
   const padSize = Math.max(0, size - result.length);
   return [...Array(padSize).fill("0"), ...result];
 }
 
 function toSize(num) {
   if (typeof window.minimumIntLen == 'number') return window.minimumIntLen;
-  return Number.isNaN(num) ? 0 : num.toString().length;
+  return num.length;
 }
 
 // STYLES
@@ -116,7 +116,7 @@ function renderRoot() {
 function render($wrapper, nextState, prevState) {
   const { value, size } = nextState;
   if (size > prevState.size) {
-    $wrapper.innerHTML = toDigits(NaN, size).map(renderDigit).join("");
+    $wrapper.innerHTML = toDigits("", size).map(renderDigit).join("");
     setTimeout(() => {
       render($wrapper, nextState, { ...prevState, size });
     }, 23);
@@ -163,7 +163,7 @@ class RollingNumber extends HTMLElement {
     return this[INTERNAL].state.value;
   }
   set value(value) {
-    this[INTERNAL].update({ value: Number.parseInt(value) });
+    this[INTERNAL].update({ value: value });
   }
   attributeChangedCallback(name, _, newValue) {
     if (name === "value") {
@@ -174,9 +174,9 @@ class RollingNumber extends HTMLElement {
     if (this.isConnected) {
       const input = this.getAttribute("value") || this.textContent;
       try {
-        if (typeof this.getAttribute('data-minimum') == 'string') window.minimumIntLen = Number(this.getAttribute('data-minimum'));
+        if (typeof this.getAttribute('data-minimum') == 'string') window.minimumIntLen = parseInt(this.getAttribute('data-minimum'));
       } catch {}
-      const value = Number.parseInt(input);
+      const value = input;
       this[INTERNAL].update({ value });
     }
   }
