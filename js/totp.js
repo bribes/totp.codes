@@ -46,18 +46,18 @@ function updateOtp() {
             otp = otp.substring(otp.length - 6);
 
             currentOtp = otp;
-            document.getElementById('otp').innerHTML = otp;
+            document.getElementById('otp').value = otp;
             document.getElementById('otp').style.opacity = '1';
         } catch {
             document.getElementById('updatingIn').innerHTML = "30";
             currentOtp = 0;
-            document.getElementById('otp').innerHTML = "000000";
+            document.getElementById('otp').value = "000000";
             document.getElementById('otp').style.opacity = '';
         }
     } else {
         document.getElementById('updatingIn').innerHTML = "30";
         currentOtp = 0;
-        document.getElementById('otp').innerHTML = "000000";
+        document.getElementById('otp').value = "000000";
         document.getElementById('otp').style.opacity = '';
     }
 }
@@ -78,7 +78,7 @@ secret.addEventListener('input', function () {
     updateOtp();
     if (secretKey.length == 0) {
         document.getElementById('updatingIn').innerHTML = "30";
-        document.getElementById('otp').innerHTML = "000000";
+        document.getElementById('otp').value = "000000";
         document.getElementById('otp').style.opacity = '';
     }
 })
