@@ -141,7 +141,7 @@ class RollingNumber extends HTMLElement {
   }
   [INTERNAL] = {
     $wrapper: null,
-    state: { value: NaN, size: 0 },
+    state: { value: "", size: 0 },
     update(payload) {
       if ("value" in payload) {
         const { value } = payload;
