@@ -152,7 +152,6 @@ function render($wrapper, nextState, prevState) {
             if (index == 0) window.$prevAll = [...$wrapper.children].map(a=>a.getAttribute('data-value')[0]).join('');
             window["prevInt" + index] = $digit.getAttribute('data-value');
 
-            console.log($prevAll, arr.join(''))
             if ($digit && $prevAll != arr.join('')) {
                 if (parseInt(window["prevInt" + index]) == parseInt(digit) && window.hasRolledInt) {
                     if (window["prevInt" + index].length == 2) {
