@@ -149,9 +149,11 @@ function render($wrapper, nextState, prevState) {
     } else {
         toDigits(value, size).forEach((digit, index, arr) => {
             const $digit = $wrapper.querySelector(`#digit${index}`);
+            if (index == 0) window.$prevAll = [...$wrapper.children].map(a=>a.getAttribute('data-value')[0]).join('');
             window["prevInt" + index] = $digit.getAttribute('data-value');
 
-            if ($digit) {
+            console.log($prevAll, arr.join(''))
+            if ($digit && $prevAll != arr.join('')) {
                 if (parseInt(window["prevInt" + index]) == parseInt(digit) && window.hasRolledInt) {
                     if (window["prevInt" + index].length == 2) {
                         $digit.dataset.value = digit;
