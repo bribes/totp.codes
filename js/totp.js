@@ -74,7 +74,7 @@ function timer() {
 }
 
 secret.addEventListener('input', function () {
-    secretKey = secret.value.split(' ').join('');
+    secretKey = secret.value.replace(/ /g, '');
     updateOtp();
     if (secretKey.length == 0) {
         document.getElementById('updatingIn').innerHTML = "30";
