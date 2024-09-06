@@ -121,7 +121,7 @@ function renderDigit(value, index) {
           <span>8</span>
           <span>9</span>
         </span>
-        <span class="value">${value}</span>
+        <span class="value">${value[0]}</span>
       </span>
     `;
 }
@@ -154,12 +154,11 @@ function render($wrapper, nextState, prevState) {
 
             if ($digit && $prevAll != arr.join('')) {
                 if (parseInt(window["prevInt" + index]) == parseInt(digit) && window.hasRolledInt) {
+                    $digit.querySelector(".value").textContent = digit;
                     if (window["prevInt" + index].length == 2) {
                         $digit.dataset.value = digit;
-                        $digit.querySelector(".value").textContent = digit
                     } else {
                         $digit.dataset.value = String(digit).repeat(2);
-                        $digit.querySelector(".value").textContent = String(digit).repeat(2);
                     }
                 } else {
                     $digit.dataset.value = digit;
