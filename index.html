@@ -48,7 +48,9 @@
         class="github"><img src="./icons/github.png" alt="GitHub"></a>
     <div class="otpOuter">
         <h1>totp.codes</h1>
-        <input type="password" maxlength="40" autocomplete="off" id="secret" placeholder="paste your secret key here">
+        <form>
+            <input type="password" maxlength="40" autocomplete="off" id="secret" placeholder="paste your secret key here">
+        </form>
         <layflags-rolling-number data-minimum="6" id="otp">000000</layflags-rolling-number>
         <p>click to copy / expires in <b id="updatingIn">30</b></p>
     </div>
