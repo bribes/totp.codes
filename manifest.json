@@ -1,0 +1,13 @@
+{
+    "short_name": "totp.codes",
+    "name": "OTP Code Generator, TOTP Codes",
+    "icons": [
+        {
+            "src": "https://totp.codes/favicon.ico",
+            "sizes": "27x32",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/",
+    "display": "standalone"
+}
