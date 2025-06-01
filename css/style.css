@@ -6,6 +6,9 @@
     padding: 0;
     border: 0;
     font-family: 'Inconsolata', sans-serif !important;
+    -webkit-transition: all 200ms linear;
+    -ms-transition: all 200ms linear;
+    transition: all 200ms linear;
 }
 
 html,
@@ -81,8 +84,8 @@ layflags-rolling-number {
     margin-top: .5rem;
     cursor: pointer;
     line-height: 1.25em;
-    --roll-duration: 1.5s;
-    transition-duration: 1.5s;
+    --roll-duration: .8s;
+    transition-duration: .8s;
 }
 
 p {
@@ -103,6 +106,10 @@ a.github {
     right: 0;
     top: 0;
     margin: 2rem;
+}
+
+a.github:hover img {
+    opacity: 1;
 }
 
 .github img {
