@@ -1,7 +1,6 @@
 Privacy Policy  
 ----------------
 
-### Introduction
 totp.codes does not collect, store, or transmit any personal data. All codes are generated locally in your browser for maximum security.
 
 ### Cookies and Analytics

@@ -1,7 +1,6 @@
 Terms of Service  
 ----------------
 
-### Introduction
 By accessing or using totp.codes, you agree to be bound by these Terms. If you do not agree, please do not use our services.
 
 ### Use of the Service
