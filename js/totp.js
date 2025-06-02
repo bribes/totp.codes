@@ -111,6 +111,8 @@ function copyTextToClipboard(text) {
         fallbackCopyTextToClipboard(text);
         return;
     }
+    if (text === "000000") return;
+    
     navigator.clipboard.writeText(text).then(function () {
         console.log('Async: Copying to clipboard was successful!');
     }, function (err) {
