@@ -112,12 +112,12 @@ function fallbackCopyTextToClipboard(text) {
 }
 
 function copyTextToClipboard(text) {
-    if (text.length == none) return;
+    if (text == none) return;
     if (!navigator.clipboard) {
         fallbackCopyTextToClipboard(text);
         return;
     }
-    
+
     navigator.clipboard.writeText(text).then(function () {
         console.log('Async: Copying to clipboard was successful!');
     }, function (err) {
@@ -133,13 +133,25 @@ tippy('#otp', {
     animation: 'shift-away',
     hideOnClick: false,
     theme: 'translucent',
-    offset:[0,-27.5],
+    offset: [0, -27.5],
     onShow(instance) {
-      if (currentOtp == none) return false;
-      setTimeout(() => {
-        instance.hide();
-      }, 500);
+        if (currentOtp == none) return false;
+        setTimeout(() => {
+            instance.hide();
+        }, 500);
     }
 });
 
 setInterval(timer, 1000);
+window.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") updateOtp();
+});
+
+window.addEventListener("copy", e => {
+    let copiedText = window.getSelection().toString().trim();
+
+    if (/^\d+$/.test(copiedText.replace(/\s/g, ""))) {
+        e.clipboardData.setData("text/plain", currentOtp);
+        e.preventDefault();
+    }
+});
