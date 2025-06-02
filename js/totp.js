@@ -1,6 +1,7 @@
 const secret = document.getElementById('secret');
+var none = "000000";
 var secretKey = "";
-var currentOtp = 0;
+var currentOtp = none;
 
 function leftpad(str, len, pad) {
     if (len + 1 >= str.length) {
@@ -51,23 +52,23 @@ function updateOtp() {
             document.getElementById('otp').style.cursor = 'pointer';
         } catch {
             document.getElementById('updatingIn').innerHTML = "30";
-            currentOtp = 0;
-            document.getElementById('otp').value = "000000";
+            currentOtp = none;
+            document.getElementById('otp').value = none;
             document.getElementById('otp').style.opacity = '';
             document.getElementById('otp').style.cursor = '';
         }
     } else {
         document.getElementById('updatingIn').innerHTML = "30";
         secret.style.cursor = 'auto';
-        currentOtp = 0;
-        document.getElementById('otp').value = "000000";
+        currentOtp = none;
+        document.getElementById('otp').value = none;
         document.getElementById('otp').style.opacity = '';
         document.getElementById('otp').style.cursor = '';
     }
 }
 
 function timer() {
-    if (currentOtp != 0) {
+    if (currentOtp !== none) {
         var epoch = Math.round(new Date().getTime() / 1000);
         var countDown = 30 - (epoch % 30);
         if (epoch % 30 == 0) updateOtp();
@@ -82,7 +83,7 @@ secret.addEventListener('input', function () {
     updateOtp();
     if (secretKey.length == 0) {
         document.getElementById('updatingIn').innerHTML = "30";
-        document.getElementById('otp').value = "000000";
+        document.getElementById('otp').value = none;
         document.getElementById('otp').style.opacity = '';
     }
 })
@@ -111,7 +112,7 @@ function fallbackCopyTextToClipboard(text) {
 }
 
 function copyTextToClipboard(text) {
-    if (text.length !== 6) return;
+    if (text.length == none) return;
     if (!navigator.clipboard) {
         fallbackCopyTextToClipboard(text);
         return;
@@ -134,7 +135,7 @@ tippy('#otp', {
     theme: 'translucent',
     offset:[0,-27.5],
     onShow(instance) {
-      if (currentOtp == 0) return false;
+      if (currentOtp == none) return false;
       setTimeout(() => {
         instance.hide();
       }, 500);
