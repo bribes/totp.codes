@@ -107,11 +107,11 @@ function fallbackCopyTextToClipboard(text) {
 }
 
 function copyTextToClipboard(text) {
+    if (text.length !== 6) return;
     if (!navigator.clipboard) {
         fallbackCopyTextToClipboard(text);
         return;
     }
-    if (text === "000000") return;
     
     navigator.clipboard.writeText(text).then(function () {
         console.log('Async: Copying to clipboard was successful!');
@@ -120,7 +120,7 @@ function copyTextToClipboard(text) {
     });
 }
 
-document.getElementById('otp').addEventListener('click', () => copyTextToClipboard(currentOtp == 0 ? "000000" : currentOtp))
+document.getElementById('otp').addEventListener('click', () => copyTextToClipboard(currentOtp))
 
 tippy('#otp', {
     content: "Copied!",
@@ -130,6 +130,7 @@ tippy('#otp', {
     theme: 'translucent',
     offset:[0,-27.5],
     onShow(instance) {
+      if (currentOtp == 0) return false;
       setTimeout(() => {
         instance.hide();
       }, 500);
