@@ -82,7 +82,6 @@ layflags-rolling-number {
     color: white;
     opacity: .15;
     margin-top: .5rem;
-    cursor: pointer;
     line-height: 1.25em;
     --roll-duration: .8s;
     transition-duration: .8s;

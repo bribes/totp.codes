@@ -48,17 +48,21 @@ function updateOtp() {
             currentOtp = otp;
             document.getElementById('otp').value = otp;
             document.getElementById('otp').style.opacity = '1';
+            document.getElementById('otp').style.cursor = 'pointer';
         } catch {
             document.getElementById('updatingIn').innerHTML = "30";
             currentOtp = 0;
             document.getElementById('otp').value = "000000";
             document.getElementById('otp').style.opacity = '';
+            document.getElementById('otp').style.cursor = '';
         }
     } else {
         document.getElementById('updatingIn').innerHTML = "30";
+        secret.style.cursor = 'auto';
         currentOtp = 0;
         document.getElementById('otp').value = "000000";
         document.getElementById('otp').style.opacity = '';
+        document.getElementById('otp').style.cursor = '';
     }
 }
 
