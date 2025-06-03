@@ -51,7 +51,7 @@ body {
 
 input {
     background-color: #121212;
-    border: 1px solid rgba(255, 255, 255, .5);
+    border: 1px solid #808080;
     padding: 12px;
     border-radius: .8rem;
     text-align: center;
@@ -68,7 +68,7 @@ input {
 
 input:focus {
     outline: none !important;
-    border-color: rgba(255, 255, 255, .75);
+    border-color: #C0C0C0;
     box-shadow: none;
 }
 
@@ -89,7 +89,7 @@ layflags-rolling-number {
 
 p {
     font-size: 18px;
-    color: rgba(255, 255, 255, .5);
+    color: #808080;
     font-weight: 500;
 }
 
