@@ -1,55 +1,54 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="totp.codes">
     <meta name="application-name" content="totp.codes">
 
     <title>OTP Code Generator | totp.codes</title>
-    <meta name="title" content="OTP Code Generator | totp.codes" />
-    <meta name="description" content="Open-source OTP/TOTP (Time-based One Time Password) Viewer. Supports all platforms 2FA (Microsoft, Discord, Minecraft, Twitter, etc)" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="title" content="OTP Code Generator | totp.codes">
+    <meta name="description" content="Open-source OTP/TOTP (Time-based One Time Password) Viewer. Supports all platforms 2FA (Microsoft, Discord, Minecraft, Twitter, etc)">
+    <meta name="theme-color" content="#000000">
 
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://totp.codes" />
-    <meta property="og:image" content="https://totp.codes/icons/2fa.png" />
-    <meta property="og:title" content="OTP Code Generator | totp.codes" />
-    <meta property="og:site_name" content="totp.codes" />
-    <meta property="og:description" content="Open-source OTP/TOTP (Time-based One Time Password) Viewer. Supports all platforms 2FA (Microsoft, Discord, Minecraft, Twitter, etc)" />
+    <meta property="og:url" content="https://totp.codes">
+    <meta property="og:image" content="https://totp.codes/icons/2fa.png">
+    <meta property="og:title" content="OTP Code Generator | totp.codes">
+    <meta property="og:site_name" content="totp.codes">
+    <meta property="og:description" content="Open-source OTP/TOTP (Time-based One Time Password) Viewer. Supports all platforms 2FA (Microsoft, Discord, Minecraft, Twitter, etc)">
 
-    <meta property="twitter:url" content="https://totp.codes" />
-    <meta property="twitter:title" content="OTP Code Generator | totp.codes" />
-    <meta property="twitter:description" content="Open-source OTP/TOTP (Time-based One Time Password) Viewer. Supports all platforms 2FA (Microsoft, Discord, Minecraft, Twitter, etc)" />
-    <meta property="twitter:image" content="https://totp.codes/icons/2fa.png" />
+    <meta property="twitter:url" content="https://totp.codes">
+    <meta property="twitter:title" content="OTP Code Generator | totp.codes">
+    <meta property="twitter:description" content="Open-source OTP/TOTP (Time-based One Time Password) Viewer. Supports all platforms 2FA (Microsoft, Discord, Minecraft, Twitter, etc)">
+    <meta property="twitter:image" content="https://totp.codes/icons/2fa.png">
 
-    <link rel="preload stylesheet" href="./css/style.css" as="style">
+    <link rel="preload" as="image" href="https://password.click/icons/github.png">
+    <link rel="preload stylesheet" href="https://totp.codes/css/style.css" as="style" crossorigin="anonymous">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=block" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tippy.js/6.3.7/animations/shift-away.css" />
-    <link rel="manifest" href="/manifest.json">
+    <link rel="preload stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tippy.js/6.3.7/animations/shift-away.css" as="style" crossorigin="anonymous">
+    <link rel="manifest" href="https://totp.codes/manifest.json">
 
-    <link rel="icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/favicon.ico">
+    <link rel="icon" href="https://totp.codes/favicon.ico">
+    <link rel="apple-touch-icon" href="https://totp.codes/favicon.ico">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/3.3.1/sha1.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tippy.js/6.3.7/tippy.umd.min.js"
         crossorigin="anonymous"></script>
-    <script type="module" crossorigin="anonymous" src="./js/rolling-number.js"></script>
-    <script src="./js/totp.js" defer></script>
+    <script type="module" crossorigin="anonymous" src="https://totp.codes/js/rolling-number.js"></script>
+    <script src="https://totp.codes/js/totp.js" defer></script>
     <script>window.addEventListener("load",()=>document.body.classList.remove("preload"))</script>
 </head>
-
 <body class="preload">
     <a rel="nofollow" href="https://github.com/bribes/totp.codes" target="_blank" title="GitHub Repository"
-        class="github"><img src="./icons/github.png" alt="GitHub Icon" title="GitHub"></a>
+        class="github"><img src="https://totp.codes/icons/github.png" alt="GitHub Icon" title="GitHub"></a>
     <div class="otpOuter">
         <h1>totp.codes</h1>
         <form>
@@ -59,5 +58,4 @@
         <p>click to copy / expires in <b id="updatingIn">30</b></p>
     </div>
 </body>
-
 </html>
