@@ -63,8 +63,6 @@
         <layflags-rolling-number data-minimum="6" id="otp">000000</layflags-rolling-number>
         <p>click to copy / expires in <b id="updatingIn">30</b></p>
     </div>
-    <script>
-        if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
-    </script>
+    <script>if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));</script>
 </body>
 </html>
