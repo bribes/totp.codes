@@ -1,51 +1,56 @@
-const CACHE_NAME = 'v1';
+const CACHE_NAME = 'totp.codes';
 
-// Install phase: optional, just cache index.html to ensure initial offline
 self.addEventListener('install', (event) => {
+  self.skipWaiting(); // Make this SW activate immediately
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.add('/'))
   );
 });
 
-// Activate: clean up old caches (optional best practice)
 self.addEventListener('activate', (event) => {
+  self.clients.claim(); // Take control of clients immediately
   event.waitUntil(
     caches.keys().then((keys) =>
-      Promise.all(keys.map((key) => {
-        if (key !== CACHE_NAME) {
-          return caches.delete(key);
-        }
-      }))
+      Promise.all(
+        keys.map((key) => {
+          if (key !== CACHE_NAME) {
+            return caches.delete(key);
+          }
+        })
+      )
     )
   );
 });
 
-// Fetch handler: dynamic caching
 self.addEventListener('fetch', (event) => {
+  // Always try the network first
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) return cachedResponse;
+    fetch(event.request)
+      .then((networkResponse) => {
+        const cloned = networkResponse.clone();
 
-      return fetch(event.request).then((networkResponse) => {
-        const clonedResponse = networkResponse.clone();
-        const validResponse =
+        // If it's a good response, cache it
+        if (
           networkResponse &&
           (networkResponse.type === 'basic' || networkResponse.type === 'cors') &&
-          networkResponse.status === 200;
-
-        if (validResponse) {
+          networkResponse.status === 200
+        ) {
           caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, clonedResponse);
+            cache.put(event.request, cloned);
           });
         }
 
         return networkResponse;
-      }).catch(() => {
-        // fallback for navigation (e.g. offline reload)
-        if (event.request.mode === 'navigate') {
-          return caches.match('/');
-        }
-      });
-    })
+      })
+      .catch(() => {
+        // If network fails, use cache
+        return caches.match(event.request).then((cachedResponse) => {
+          // For navigation fallback
+          if (!cachedResponse && event.request.mode === 'navigate') {
+            return caches.match('/');
+          }
+          return cachedResponse;
+        });
+      })
   );
 });
