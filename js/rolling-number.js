@@ -72,25 +72,25 @@ function renderStyles() {
         }
         [data-value="​"] .scale { transform: translatey(10%); }
         [data-value="0"] .scale { transform: translatey(0%); }
-        [data-value="1"] .scale { transform: translatey(-5.2%); }
-        [data-value="2"] .scale { transform: translatey(-10.5%); }
-        [data-value="3"] .scale { transform: translatey(-15.8%); }
-        [data-value="4"] .scale { transform: translatey(-21%); }
-        [data-value="5"] .scale { transform: translatey(-26.3%); }
-        [data-value="6"] .scale { transform: translatey(-31.6%); }
-        [data-value="7"] .scale { transform: translatey(-36.8%); }
-        [data-value="8"] .scale { transform: translatey(-42.1%); }
-        [data-value="9"] .scale { transform: translatey(-47.35%); }
-        [data-value="00"] .scale { transform: translatey(-52.65%); }
-        [data-value="11"] .scale { transform: translatey(-57.85%); }
-        [data-value="22"] .scale { transform: translatey(-63.1%); }
-        [data-value="33"] .scale { transform: translatey(-68.4%); }
-        [data-value="44"] .scale { transform: translatey(-73.65%); }
+        [data-value="1"] .scale { transform: translatey(-5.265%); }
+        [data-value="2"] .scale { transform: translatey(-10.525%); }
+        [data-value="3"] .scale { transform: translatey(-15.79%); }
+        [data-value="4"] .scale { transform: translatey(-21.055%); }
+        [data-value="5"] .scale { transform: translatey(-26.315%); }
+        [data-value="6"] .scale { transform: translatey(-31.58%); }
+        [data-value="7"] .scale { transform: translatey(-36.84%); }
+        [data-value="8"] .scale { transform: translatey(-42.105%); }
+        [data-value="9"] .scale { transform: translatey(-47.37%); }
+        [data-value="00"] .scale { transform: translatey(-52.63%); }
+        [data-value="11"] .scale { transform: translatey(-57.895%); }
+        [data-value="22"] .scale { transform: translatey(-63.16%); }
+        [data-value="33"] .scale { transform: translatey(-68.42%); }
+        [data-value="44"] .scale { transform: translatey(-73.685%); }
         [data-value="55"] .scale { transform: translatey(-78.95%); }
-        [data-value="66"] .scale { transform: translatey(-84.25%); }
-        [data-value="77"] .scale { transform: translatey(-89.45%); }
-        [data-value="88"] .scale { transform: translatey(-94.75%); }
-        [data-value="99"] .scale { transform: translatey(-104.75%); }
+        [data-value="66"] .scale { transform: translatey(-84.2%); }
+        [data-value="77"] .scale { transform: translatey(-89.475%); }
+        [data-value="88"] .scale { transform: translatey(-94.74%); }
+        [data-value="99"] .scale { transform: translatey(-104.74%); }
       </style>
     `;
 }
