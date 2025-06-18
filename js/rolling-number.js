@@ -1,3 +1,4 @@
+// EDITED BY FAAV
 // HELPER
 
 window.hasRolledInt = false;
