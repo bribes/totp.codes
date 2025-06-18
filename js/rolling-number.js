@@ -58,7 +58,7 @@ function renderStyles() {
           user-select: none;
           position: absolute;
           left: 0;
-          display: inline-flex
+          display: inline-flex;
           align-items: center;
           justify-content: center;
           flex-direction: column;
@@ -70,22 +70,22 @@ function renderStyles() {
           left: 0;
         }
         [data-value="​"] .scale { transform: translatey(10%); }
-        [data-value="0"] .scale { transform: translatey(0); }
-        [data-value="1"] .scale { transform: translatey(-5.25%); }
-        [data-value="2"] .scale { transform: translatey(-10.55%); }
-        [data-value="3"] .scale { transform: translatey(-15.75%); }
+        [data-value="0"] .scale { transform: translatey(0%); }
+        [data-value="1"] .scale { transform: translatey(-5.2%); }
+        [data-value="2"] .scale { transform: translatey(-10.5%); }
+        [data-value="3"] .scale { transform: translatey(-15.8%); }
         [data-value="4"] .scale { transform: translatey(-21%); }
-        [data-value="5"] .scale { transform: translatey(-26.25%); }
-        [data-value="6"] .scale { transform: translatey(-31.55%); }
-        [data-value="7"] .scale { transform: translatey(-36.75%); }
-        [data-value="8"] .scale { transform: translatey(-42.15%); }
+        [data-value="5"] .scale { transform: translatey(-26.3%); }
+        [data-value="6"] .scale { transform: translatey(-31.6%); }
+        [data-value="7"] .scale { transform: translatey(-36.8%); }
+        [data-value="8"] .scale { transform: translatey(-42.1%); }
         [data-value="9"] .scale { transform: translatey(-47.35%); }
         [data-value="00"] .scale { transform: translatey(-52.65%); }
         [data-value="11"] .scale { transform: translatey(-57.85%); }
-        [data-value="22"] .scale { transform: translatey(-63.15%); }
-        [data-value="33"] .scale { transform: translatey(-68.35%); }
+        [data-value="22"] .scale { transform: translatey(-63.1%); }
+        [data-value="33"] .scale { transform: translatey(-68.4%); }
         [data-value="44"] .scale { transform: translatey(-73.65%); }
-        [data-value="55"] .scale { transform: translatey(-78.85%); }
+        [data-value="55"] .scale { transform: translatey(-78.95%); }
         [data-value="66"] .scale { transform: translatey(-84.25%); }
         [data-value="77"] .scale { transform: translatey(-89.45%); }
         [data-value="88"] .scale { transform: translatey(-94.75%); }
