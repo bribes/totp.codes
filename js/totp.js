@@ -1,4 +1,6 @@
 const secret = document.getElementById('secret');
+const updatingIn = document.getElementById('updatingIn');
+const otpEl = document.getElementById('otp');
 const none = "000000";
 let secretKey = "";
 let currentOtp = none;
@@ -40,7 +42,7 @@ function updateOtp() {
 
 function setOtp(otp) {
     currentOtp = otp;
-    const otpElem = document.getElementById('otp');
+    const otpElem = otpEl;
     otpElem.value = otp;
     otpElem.style.opacity = '1';
     otpElem.style.cursor = 'pointer';
@@ -48,17 +50,17 @@ function setOtp(otp) {
 
 function resetOtp() {
     currentOtp = none;
-    const otpElem = document.getElementById('otp');
+    const otpElem = otpEl;
     otpElem.value = none;
     otpElem.style.opacity = '';
     otpElem.style.cursor = '';
-    document.getElementById('updatingIn').textContent = "30";
+    updatingIn.textContent = "30";
 }
 
 function timer() {
     const epoch = Math.floor(Date.now() / 1000);
     const countDown = 30 - (epoch % 30);
-    document.getElementById('updatingIn').textContent = currentOtp !== none ? countDown : "30";
+    updatingIn.textContent = currentOtp !== none ? countDown : "30";
     if (epoch % 30 === 0) updateOtp();
 }
 
@@ -98,7 +100,7 @@ function fallbackCopyTextToClipboard(text) {
     document.body.removeChild(textArea);
 }
 
-document.getElementById('otp').addEventListener('click', () => copyTextToClipboard(currentOtp));
+otpEl.addEventListener('click', () => copyTextToClipboard(currentOtp));
 
 tippy('#otp', {
     content: "Copied!",
