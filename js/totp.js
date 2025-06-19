@@ -1,131 +1,104 @@
 const secret = document.getElementById('secret');
-var none = "000000";
-var secretKey = "";
-var currentOtp = none;
+const none = "000000";
+let secretKey = "";
+let currentOtp = none;
 
-function leftpad(str, len, pad) {
-    if (len + 1 >= str.length) {
-        str = Array(len + 1 - str.length).join(pad) + str;
-    }
-    return str;
-}
-
-function dec2hex(s) { return (s < 15.5 ? '0' : '') + Math.round(s).toString(16); }
-function hex2dec(s) { return parseInt(s, 16); }
+const dec2hex = s => s.toString(16).padStart(2, '0');
+const hex2dec = s => parseInt(s, 16);
 
 function base32tohex(base32) {
-    var base32chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
-    var bits = "";
-    var hex = "";
-
-    for (var i = 0; i < base32.length; i++) {
-        var val = base32chars.indexOf(base32.charAt(i).toUpperCase());
-        bits += leftpad(val.toString(2), 5, '0');
-    }
-
-    for (var i = 0; i + 4 <= bits.length; i += 4) {
-        var chunk = bits.substr(i, 4);
-        hex = hex + parseInt(chunk, 2).toString(16);
-    }
-    return hex;
+    const base32chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
+    return Array.from(base32.toUpperCase())
+        .map(char => base32chars.indexOf(char).toString(2).padStart(5, '0'))
+        .join('')
+        .match(/.{4}/g)
+        .map(bin => parseInt(bin, 2).toString(16))
+        .join('');
 }
 
 function updateOtp() {
-    if (secretKey.length >= 16 && secretKey.length <= 40) {
-        try {
-            var key = base32tohex(secretKey);
-            var epoch = Math.round(new Date().getTime() / 1000);
-            var time = leftpad(dec2hex(Math.floor(epoch / 30)), 16, '0');
+    if (secretKey.length < 16 || secretKey.length > 40) return resetOtp();
 
-            var shaObj = new jsSHA("SHA-1", "HEX");
-            shaObj.setHMACKey(key, "HEX");
-            shaObj.update(time);
-            var hmac = shaObj.getHMAC("HEX");
-            var offset = hex2dec(hmac.substring(hmac.length - 1));
+    try {
+        const key = base32tohex(secretKey);
+        const epoch = Math.floor(Date.now() / 1000);
+        const time = dec2hex(Math.floor(epoch / 30)).padStart(16, '0');
 
-            var otp = (hex2dec(hmac.substr(offset * 2, 8)) & hex2dec('7fffffff')) + '';
-            otp = otp.substring(otp.length - 6);
+        const shaObj = new jsSHA("SHA-1", "HEX");
+        shaObj.setHMACKey(key, "HEX");
+        shaObj.update(time);
+        const hmac = shaObj.getHMAC("HEX");
 
-            currentOtp = otp;
-            document.getElementById('otp').value = otp;
-            document.getElementById('otp').style.opacity = '1';
-            document.getElementById('otp').style.cursor = 'pointer';
-        } catch {
-            document.getElementById('updatingIn').innerHTML = "30";
-            currentOtp = none;
-            document.getElementById('otp').value = none;
-            document.getElementById('otp').style.opacity = '';
-            document.getElementById('otp').style.cursor = '';
-        }
-    } else {
-        document.getElementById('updatingIn').innerHTML = "30";
-        secret.style.cursor = 'auto';
-        currentOtp = none;
-        document.getElementById('otp').value = none;
-        document.getElementById('otp').style.opacity = '';
-        document.getElementById('otp').style.cursor = '';
+        const offset = hex2dec(hmac.slice(-1));
+        const otp = (hex2dec(hmac.slice(offset * 2, offset * 2 + 8)) & 0x7fffffff).toString().slice(-6);
+
+        setOtp(otp);
+    } catch {
+        resetOtp();
     }
 }
 
+function setOtp(otp) {
+    currentOtp = otp;
+    const otpElem = document.getElementById('otp');
+    otpElem.value = otp;
+    otpElem.style.opacity = '1';
+    otpElem.style.cursor = 'pointer';
+}
+
+function resetOtp() {
+    currentOtp = none;
+    const otpElem = document.getElementById('otp');
+    otpElem.value = none;
+    otpElem.style.opacity = '';
+    otpElem.style.cursor = '';
+    document.getElementById('updatingIn').textContent = "30";
+}
+
 function timer() {
-    if (currentOtp !== none) {
-        var epoch = Math.round(new Date().getTime() / 1000);
-        var countDown = 30 - (epoch % 30);
-        if (epoch % 30 == 0) updateOtp();
-        document.getElementById('updatingIn').innerHTML = countDown;
-    } else {
-        document.getElementById('updatingIn').innerHTML = "30";
-    }
+    const epoch = Math.floor(Date.now() / 1000);
+    const countDown = 30 - (epoch % 30);
+    document.getElementById('updatingIn').textContent = currentOtp !== none ? countDown : "30";
+    if (epoch % 30 === 0) updateOtp();
 }
 
 secret.addEventListener('input', function () {
     secretKey = secret.value.replace(/ /g, '');
     updateOtp();
-    if (secretKey.length == 0) {
-        document.getElementById('updatingIn').innerHTML = "30";
-        document.getElementById('otp').value = none;
-        document.getElementById('otp').style.opacity = '';
+    if (secretKey.length === 0) resetOtp();
+});
+
+async function copyTextToClipboard(text) {
+    if (text === none) return;
+    try {
+        await navigator.clipboard.writeText(text);
+        console.log('Copied!');
+    } catch {
+        fallbackCopyTextToClipboard(text);
     }
-})
+}
 
 function fallbackCopyTextToClipboard(text) {
-    var textArea = document.createElement("textarea");
+    const textArea = document.createElement("textarea");
     textArea.value = text;
 
-    textArea.style.top = "0";
-    textArea.style.left = "0";
-    textArea.style.position = "fixed";
+    Object.assign(textArea.style, { top: "0", left: "0", position: "fixed" });
 
     document.body.appendChild(textArea);
     textArea.focus();
     textArea.select();
 
     try {
-        var successful = document.execCommand('copy');
-        var msg = successful ? 'successful' : 'unsuccessful';
-        console.log('Fallback: Copying text command was ' + msg);
+        document.execCommand('copy');
+        console.log('Fallback: Copying text command was successful');
     } catch (err) {
-        console.error('Fallback: Oops, unable to copy', err);
+        console.error('Fallback: Unable to copy', err);
     }
 
     document.body.removeChild(textArea);
 }
 
-function copyTextToClipboard(text) {
-    if (text == none) return;
-    if (!navigator.clipboard) {
-        fallbackCopyTextToClipboard(text);
-        return;
-    }
-
-    navigator.clipboard.writeText(text).then(function () {
-        console.log('Async: Copying to clipboard was successful!');
-    }, function (err) {
-        console.error('Async: Could not copy text: ', err);
-    });
-}
-
-document.getElementById('otp').addEventListener('click', () => copyTextToClipboard(currentOtp))
+document.getElementById('otp').addEventListener('click', () => copyTextToClipboard(currentOtp));
 
 tippy('#otp', {
     content: "Copied!",
@@ -135,10 +108,8 @@ tippy('#otp', {
     theme: 'translucent',
     offset: [0, -27.5],
     onShow(instance) {
-        if (currentOtp == none) return false;
-        setTimeout(() => {
-            instance.hide();
-        }, 500);
+        if (currentOtp === none) return false;
+        setTimeout(() => instance.hide(), 500);
     }
 });
 
@@ -148,8 +119,7 @@ window.addEventListener("visibilitychange", () => {
 });
 
 window.addEventListener("copy", e => {
-    let copiedText = window.getSelection().toString().trim();
-
+    const copiedText = window.getSelection().toString().trim();
     if (/^\d+$/.test(copiedText.replace(/\s/g, ""))) {
         e.clipboardData.setData("text/plain", currentOtp);
         e.preventDefault();
