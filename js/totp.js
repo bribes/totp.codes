@@ -127,3 +127,13 @@ window.addEventListener("copy", e => {
         e.preventDefault();
     }
 });
+
+const url = new URL(window.location.href);
+if (url.searchParams.has('code')) {
+    secretKey = url.searchParams.get('code').replace(/\s+/g, '');
+    secret.value = secretKey.match(/.{1,4}/g)?.join(' ') || '';
+    updateOtp();
+
+    url.searchParams.delete('code');
+    window.history.replaceState({}, document.title, url.toString());
+}
