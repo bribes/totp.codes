@@ -47,6 +47,7 @@
         crossorigin="anonymous" type="module"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tippy.js/6.3.7/tippy.umd.min.js"
         crossorigin="anonymous" type="module"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/otpauth/9.4.1/otpauth.umd.min.js" crossorigin="anonymous" type="module"></script>
     <script src="https://totp.codes/js/rolling-number.js" crossorigin="anonymous" type="module"></script>
     <script src="https://totp.codes/js/totp.js" crossorigin="anonymous" type="module"></script>
     <script>window.addEventListener("load", () => document.body.classList.remove("preload"))</script>
@@ -57,7 +58,7 @@
     <div class="container">
         <h1>totp.codes</h1>
         <form>
-            <input type="password" maxlength="40" autofocus autocomplete="off" id="secret"
+            <input type="password" autofocus autocomplete="off" id="secret"
                 placeholder="paste your secret key here">
         </form>
         <layflags-rolling-number data-minimum="6" id="otp">000000</layflags-rolling-number>
