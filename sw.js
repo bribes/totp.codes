@@ -1,4 +1,4 @@
-const CACHE_NAME = 'totp.codes-v1.4';
+const CACHE_NAME = 'totp.codes-v1.5';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting(); // Make this SW activate immediately
