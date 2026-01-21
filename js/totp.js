@@ -136,6 +136,6 @@ window.addEventListener("DOMContentLoaded", () => {
         url.searchParams.delete('code');
         window.history.replaceState({}, document.title, url.toString());
 
-        updateOtp();
+        setTimeout(updateOtp, 50);
     }
 });
