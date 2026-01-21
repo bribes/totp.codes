@@ -48,7 +48,7 @@ secretInput.addEventListener('input', function () {
         return resetOtp();
     }
     totp = new OTPAuth.TOTP({
-        secret: OTPAuth.Secret.fromBase32(secretKey.replace(/ /g, '')),
+        secret: secretKey,
         algorithm: 'SHA1',
         digits: 6,
         period: 30
