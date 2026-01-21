@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <script>
+        const path = window.location.pathname.slice(1);
+        if (/^[A-Za-z0-9_-]+$/.test(path)) {
+            window.location.replace("/?code=" + encodeURIComponent(path));
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>
