@@ -100,21 +100,6 @@ function fallbackCopyTextToClipboard(text) {
     document.body.removeChild(textArea);
 }
 
-otpEl.addEventListener('click', () => copyTextToClipboard(currentOtp));
-
-tippy('#otp', {
-    content: "Copied!",
-    trigger: 'click',
-    animation: 'shift-away',
-    hideOnClick: false,
-    theme: 'translucent',
-    offset: [0, -27.5],
-    onShow(instance) {
-        if (currentOtp === none) return false;
-        setTimeout(() => instance.hide(), 500);
-    }
-});
-
 setInterval(timer, 1000);
 window.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") updateOtp();
@@ -128,12 +113,29 @@ window.addEventListener("copy", e => {
     }
 });
 
-const url = new URL(window.location.href);
-if (url.searchParams.has('code')) {
-    secretKey = url.searchParams.get('code').replace(/\s+/g, '');
-    secret.value = secretKey.match(/.{1,4}/g)?.join(' ') || '';
-    updateOtp();
+window.addEventListener("DOMContentLoaded", () => {
+    otpEl.addEventListener('click', () => copyTextToClipboard(currentOtp));
 
-    url.searchParams.delete('code');
-    window.history.replaceState({}, document.title, url.toString());
-}
+    tippy('#otp', {
+        content: "Copied!",
+        trigger: 'click',
+        animation: 'shift-away',
+        hideOnClick: false,
+        theme: 'translucent',
+        offset: [0, -27.5],
+        onShow(instance) {
+            if (currentOtp === none) return false;
+            setTimeout(() => instance.hide(), 500);
+        }
+    });
+
+    const url = new URL(window.location.href);
+    if (url.searchParams.has('code')) {
+        secretKey = url.searchParams.get('code').replace(/\s+/g, '');
+        secret.value = secretKey.match(/.{1,4}/g)?.join(' ') || '';
+        updateOtp();
+
+        url.searchParams.delete('code');
+        window.history.replaceState({}, document.title, url.toString());
+    }
+});
