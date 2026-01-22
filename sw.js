@@ -1,14 +1,24 @@
-const CACHE_NAME = 'totp.codes-v1.6';
+const CACHE_NAME = 'totp.codes-v1.7';
+const FETCH_TIMEOUT = 5000; // 5 seconds
+
+function fetchWithTimeout(request) {
+  return Promise.race([
+    fetch(request),
+    new Promise((_, reject) =>
+      setTimeout(() => reject(new Error('Network timeout')), FETCH_TIMEOUT)
+    )
+  ]);
+}
 
 self.addEventListener('install', (event) => {
-  self.skipWaiting(); // Make this SW activate immediately
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.add('/'))
   );
 });
 
 self.addEventListener('activate', (event) => {
-  self.clients.claim(); // Take control of clients immediately
+  self.clients.claim();
   event.waitUntil(
     caches.keys().then((keys) =>
       Promise.all(
@@ -23,13 +33,11 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  // Always try the network first
   event.respondWith(
-    fetch(event.request)
+    fetchWithTimeout(event.request)
       .then((networkResponse) => {
         const cloned = networkResponse.clone();
 
-        // If it's a good response, cache it
         if (
           networkResponse &&
           (networkResponse.type === 'basic' || networkResponse.type === 'cors') &&
@@ -43,9 +51,7 @@ self.addEventListener('fetch', (event) => {
         return networkResponse;
       })
       .catch(() => {
-        // If network fails, use cache
         return caches.match(event.request).then((cachedResponse) => {
-          // For navigation fallback
           if (!cachedResponse && event.request.mode === 'navigate') {
             return caches.match('/');
           }
